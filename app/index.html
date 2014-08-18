@@ -21,9 +21,9 @@
                             <a class="brand" href="/">AngularJS Lazy Loading Seed</a>
                             <div class="nav-collapse collapse">
                                 <ul class="nav">
-                                    <li><a href="/">Home</a></li>
-                                    <li><a href="/about/me">About</a></li>
-                                    <li><a href="/contact">Contact</a></li>
+                                    <li><a ui-sref="home">Home</a></li>
+                                    <li><a ui-sref="aboutme">About</a></li>
+                                    <li><a ui-sref="contact">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                 </div>
             </div>
             <!-- Main Content Container -->
-            <div id="main" class="container" ng-view></div>
+            <div id="main" class="container" ui-view></div>
             <div id="push"></div>
         </div>
         <script type="text/javascript" src="/lib/jquery.min.js"></script>

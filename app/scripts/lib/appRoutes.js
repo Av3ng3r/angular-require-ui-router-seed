@@ -1,19 +1,33 @@
 define([], function() {
     return {
-        defaultRoutePath: '/',
+        defaultRoutePath: 'home',
         routes: {
-            '/': {
+            'home': {
                 templateUrl: '/scripts/home/views/home.html',
-                module: 'home'
+                url: '/',
+                module: 'home',
+                controller: 'HomeViewController'
             },
-            '/about/:person': {
+            'home.list': {
+                templateUrl: '/scripts/home/views/home.list.html',
+                url: 'list',
+                module: 'home',
+                controller: 'HomeViewController'
+            },
+            'aboutme': {
+                url: '/about/me',
                 templateUrl: '/scripts/about/views/about.html',
-                module: 'about'
+                module: 'about',
+                controller: 'AboutViewController'
             },
-            '/contact': {
+            'contact': {
+                url: '/contact',
                 templateUrl: 'scripts/contact/views/contact.html',
-                module: 'contact'
+                module: 'contact',
+                controller: 'ContactViewController'
             }
         }
     };
 });
+
+// TODO separate out into module specific routes ??

@@ -2,17 +2,18 @@ define([
     'lib/appRoutes',
     'lib/services/dependencyResolverFor'
 ], function(config, dependencyResolverFor) {
-    var app = angular.module('app', ['lazyOverride']);
+    app = angular.module('app', ['lazyOverride']);
 
     app.config([
-        '$routeProvider',
+        '$stateProvider',
+        '$urlRouterProvider',
         '$locationProvider',
         '$controllerProvider',
         '$compileProvider',
         '$filterProvider',
         '$provide',
 
-        function($routeProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide) {
+        function($stateProvider, $urlRouterProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide) {
             app.lazy = {
                 controller : $controllerProvider.register,
                 directive  : $compileProvider.directive,
@@ -24,18 +25,18 @@ define([
             $locationProvider.html5Mode(true);
 
             if(config.routes !== undefined) {
-                angular.forEach(config.routes, function(route, path) {
-                    $routeProvider.when(path, {
-                        templateUrl:route.templateUrl,
-                        resolve:dependencyResolverFor(route.module)
+                angular.forEach(config.routes, function(route, state) {
+                    $stateProvider.state(state, {
+                        url: route.url,
+                        templateUrl: route.templateUrl,
+                        resolve: dependencyResolverFor(route.module),
+                        controller: route.controller
                     });
                 });
             }
 
             if(config.defaultRoutePath !== undefined) {
-                $routeProvider.otherwise({
-                    redirectTo:config.defaultRoutePath
-                });
+                $urlRouterProvider.otherwise(config.defaultRoutePath);
             }
         }
     ]);

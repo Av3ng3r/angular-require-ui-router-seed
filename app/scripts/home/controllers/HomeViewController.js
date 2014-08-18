@@ -1,12 +1,8 @@
 app.lazy.controller('HomeViewController',
-[
-    '$scope',
+['$scope', function($scope) {
+    $scope.page = {
+        heading: 'Welcome'
+    };
 
-    function($scope)
-    {
-        $scope.page =
-        {
-            heading: 'Welcome'
-        };
-    }
-]);
+    $scope.items = ["A", "List", "Of", "Items"];
+}]);
