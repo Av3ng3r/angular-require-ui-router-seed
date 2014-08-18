@@ -1,9 +1,10 @@
-define(['lib/appRoutes','lib/services/dependencyResolverFor'], function(config, dependencyResolverFor)
-{
-    app = angular.module('app', ['lazyOverride']);
+define([
+    'lib/appRoutes',
+    'lib/services/dependencyResolverFor'
+], function(config, dependencyResolverFor) {
+    var app = angular.module('app', ['lazyOverride']);
 
-    app.config(
-    [
+    app.config([
         '$routeProvider',
         '$locationProvider',
         '$controllerProvider',
@@ -11,10 +12,8 @@ define(['lib/appRoutes','lib/services/dependencyResolverFor'], function(config, 
         '$filterProvider',
         '$provide',
 
-        function($routeProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide)
-        {
-            app.lazy =
-            {
+        function($routeProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide) {
+            app.lazy = {
                 controller : $controllerProvider.register,
                 directive  : $compileProvider.directive,
                 filter     : $filterProvider.register,
@@ -24,17 +23,19 @@ define(['lib/appRoutes','lib/services/dependencyResolverFor'], function(config, 
 
             $locationProvider.html5Mode(true);
 
-            if(config.routes !== undefined)
-            {
-                angular.forEach(config.routes, function(route, path)
-                {
-                    $routeProvider.when(path, {templateUrl:route.templateUrl, resolve:dependencyResolverFor(route.module)});
+            if(config.routes !== undefined) {
+                angular.forEach(config.routes, function(route, path) {
+                    $routeProvider.when(path, {
+                        templateUrl:route.templateUrl,
+                        resolve:dependencyResolverFor(route.module)
+                    });
                 });
             }
 
-            if(config.defaultRoutePath !== undefined)
-            {
-                $routeProvider.otherwise({redirectTo:config.defaultRoutePath});
+            if(config.defaultRoutePath !== undefined) {
+                $routeProvider.otherwise({
+                    redirectTo:config.defaultRoutePath
+                });
             }
         }
     ]);

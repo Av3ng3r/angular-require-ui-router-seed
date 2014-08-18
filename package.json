@@ -1,5 +1,5 @@
 {
-  "name": "angularjs-lazy-loading-with-requirejs",
+  "name": "angular-require-ui-router-seed",
   "version": "0.0.1",
   "description": "A demonstration of lazy loading in AngularJS using Asynchronous Module Definitions with RequireJS.",
   "scripts": {
@@ -7,14 +7,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ifyio/angularjs-lazy-loading-with-requirejs.git"
+    "url": "https://github.com/Av3ng3r/angular-require-ui-router-seed"
   },
   "keywords": [
     "Lazy",
     "Loading",
-    "AngularJS"
+    "AngularJS",
+    "UI-Router"
   ],
-  "author": "Ifeanyi Isitor (ifeanyiisitor@gmail.com)",
+  "author": "Etienne Marais (etienne.m@everlytic.com)",
   "license": "BSD",
   "readmeFilename": "README.md",
   "dependencies": {
